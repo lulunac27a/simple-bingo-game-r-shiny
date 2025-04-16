@@ -10,11 +10,11 @@ server <- function(input, output) {
   # define server component
   observeEvent(input$start, {
     # when start button is pressed generate random numbers
-    b <- sample(1:15, 5)
-    i <- sample(16:30, 5)
-    n <- sample(31:45, 5)
-    g <- sample(46:60, 5)
-    o <- sample(61:75, 5)
+    b <- sample(1:15, 5, replace = FALSE)
+    i <- sample(16:30, 5, replace = FALSE)
+    n <- sample(31:45, 5, replace = FALSE)
+    g <- sample(46:60, 5, replace = FALSE)
+    o <- sample(61:75, 5, replace = FALSE)
     output$bingoGrid <- renderTable({
       # render bingo grid table
       bingo_table <- matrix(c(b, i, n, g, o), nrow = 5,
