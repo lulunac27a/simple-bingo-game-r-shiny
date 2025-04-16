@@ -11,7 +11,10 @@ server <- function(input, output) {
     g <- sample(46:60, 5)
     o <- sample(61:75, 5)
     output$bingoGrid <- renderTable({
-      matrix(c(b, i, n, g, o), nrow = 5, ncol = 5, byrow = TRUE)
+      bingo_table <- matrix(c(b, i, n, g, o), nrow = 5,
+        ncol = 5, byrow = TRUE)
+      colnames(bingo_table) <- c("B", "I", "N", "G", "O")
+      bingo_table
     })
   })
 }
