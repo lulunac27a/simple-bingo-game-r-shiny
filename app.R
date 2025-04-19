@@ -3,12 +3,20 @@ library(shiny)
 # define UI component
 ui <- fluidPage(titlePanel("Simple Bingo Game in R Shiny"), sidebarLayout(sidebarPanel(actionButton("start",
   "Start Game")  # button to start game
-), mainPanel(tableOutput("bingoGrid")  # bingo grid table output
+, textOutput("calledNumber")),
+  mainPanel(tableOutput("bingoGrid")  # bingo grid table output
 )))
 
-server <- function(input, output) {
+server <- function(input, output, session) {
   # define server component
+  called_numbers <- 0
+  called_number <- reactiveValues(value = 0)
+  number_list <- sample(1:75, 75, replace = FALSE)
+
   observeEvent(input$start, {
+    called_numbers <- 0
+    called_number$value <- 0
+    invalidateLater(1000, session)
     # when start button is pressed generate random numbers
     b <- sample(1:15, 5, replace = FALSE)
     i <- sample(16:30, 5, replace = FALSE)
@@ -22,6 +30,19 @@ server <- function(input, output) {
       colnames(bingo_table) <- c("B", "I", "N", "G", "O")  # column names
       bingo_table
     })
+  })
+
+  observe({
+    invalidateLater(1000, session)  # update called number every second
+    called_numbers <<- called_numbers + 1
+    isolate({
+      called_number$value <- number_list[called_numbers]
+    })
+  })
+
+  output$calledNumber <- renderText({
+    # render called number text
+    called_number$value
   })
 }
 
