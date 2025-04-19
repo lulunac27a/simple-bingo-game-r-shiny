@@ -2,8 +2,8 @@
 library(shiny)
 # define UI component
 ui <- fluidPage(titlePanel("Simple Bingo Game in R Shiny"), sidebarLayout(sidebarPanel(actionButton("start",
-  "Start Game")  #button to start game
-), mainPanel(tableOutput("bingoGrid")  #bingo grid table output
+  "Start Game")  # button to start game
+), mainPanel(tableOutput("bingoGrid")  # bingo grid table output
 )))
 
 server <- function(input, output) {
@@ -18,11 +18,11 @@ server <- function(input, output) {
     output$bingoGrid <- renderTable({
       # render bingo grid table
       bingo_table <- matrix(c(b, i, n, g, o), nrow = 5,
-        ncol = 5, byrow = TRUE)  #bingo table
-      colnames(bingo_table) <- c("B", "I", "N", "G", "O")  #column names
+        ncol = 5, byrow = TRUE)  # bingo table
+      colnames(bingo_table) <- c("B", "I", "N", "G", "O")  # column names
       bingo_table
     })
   })
 }
 
-shinyApp(ui = ui, server = server)  #run the Shiny web app server
+shinyApp(ui = ui, server = server)  # run the Shiny web app server
