@@ -3,8 +3,8 @@ library(shiny)
 # define UI component
 ui <- fluidPage(titlePanel("Simple Bingo Game in R Shiny"), sidebarLayout(sidebarPanel(actionButton("start",
   "Start Game")  # button to start game
-, textOutput("calledNumber")),
-  mainPanel(tableOutput("bingoGrid")  # bingo grid table output
+, textOutput("calledNumber")  # called number output
+), mainPanel(tableOutput("bingoGrid")  # bingo grid table output
 )))
 
 server <- function(input, output, session) {
