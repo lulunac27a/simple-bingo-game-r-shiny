@@ -108,11 +108,11 @@ server <- function(input, output, session) {
             byrow = FALSE
         ) # bingo table
         colnames(bingo_table) <- c("B", "I", "N", "G", "O") # column names
-        for (i in 1:nrow(bingo_table)) {
+        for (i in seq_len(nrow(bingo_table))) {
             # repeat for each row in bingo table grid repeat for
             # each column in bingo table grid if bingo grid cell
             # is filled
-            for (j in 1:ncol(bingo_table)) {
+            for (j in seq_len(ncol(bingo_table))) {
                 if (bingo_filled[i, j]) {
                     bingo_table[i, j] <- sprintf(
                         "<span style='background-color: $0080ff'>%s</span>",
@@ -132,11 +132,11 @@ server <- function(input, output, session) {
             byrow = FALSE
         ) # bingo table
         colnames(bingo_table) <- c("B", "I", "N", "G", "O") # column names
-        for (i in 1:nrow(bingo_table)) {
+        for (i in seq_len(nrow(bingo_table))) {
             # repeat for each row in bingo table grid repeat for
             # each column in bingo table grid if bingo grid cell
             # is filled
-            for (j in 1:ncol(bingo_table)) {
+            for (j in seq_len(ncol(bingo_table))) {
                 if (bingo_filled[i, j]) {
                     bingo_table[i, j] <- sprintf(
                         "<span style='background-color: $0080ff'>%s</span>",
