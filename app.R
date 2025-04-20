@@ -115,7 +115,7 @@ server <- function(input, output, session) {
             for (j in seq_len(ncol(bingo_table))) {
                 if (bingo_filled[i, j]) {
                     bingo_table[i, j] <- sprintf(
-                        "<span style='background-color: $0080ff'>%s</span>",
+                        "<span style='background-color: $0080ff'>(%s) X</span>",
                         bingo_table[i, j]
                     ) # set cell background color to blue
                 }
@@ -139,7 +139,7 @@ server <- function(input, output, session) {
             for (j in seq_len(ncol(bingo_table))) {
                 if (bingo_filled[i, j]) {
                     bingo_table[i, j] <- sprintf(
-                        "<span style='background-color: $0080ff'>%s</span>",
+                        "<span style='background-color: $0080ff'>(%s) X</span>",
                         bingo_table[i, j]
                     ) # set cell background color to blue
                 }
